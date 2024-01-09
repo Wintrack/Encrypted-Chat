@@ -1,0 +1,29 @@
+services:
+  encrypted-app:
+    build:
+      context: ./app
+    depends_on:
+      - chat-database
+    environment:
+      NODE_ENV: production
+      MONGO_URL: mongodb://chat-database:27017/Encrypted-Chat
+    ports:
+      - 3000:3000
+      - 35729:35729
+    develop:
+      watch:
+        - path: ./app/package.json
+          action: rebuild
+        - path: ./app
+          target: /usr/src/app
+          action: sync
+
+  chat-database:
+    image: mongo:6
+    volumes:
+      - database:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  database:
