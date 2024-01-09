@@ -18,3 +18,10 @@ Follow these steps to get Encrypted-chat up and running on your local machine:
     ```bash
     git clone https://github.com/your-username/encrypted-chat.git
     ```
+
+2. Launch backend:
+
+    ```bash
+    cd backend
+    docker compose up -d
+    ```
